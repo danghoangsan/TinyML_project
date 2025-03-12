@@ -1,0 +1,288 @@
+[
+    {
+        "id": "b13518b1015e9821",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "04474eee94046759",
+        "type": "serial in",
+        "z": "b13518b1015e9821",
+        "name": "",
+        "serial": "75c4e566ba7509e0",
+        "x": 190,
+        "y": 260,
+        "wires": [
+            [
+                "e47db1d96cda986d",
+                "ea40e8066485461b"
+            ]
+        ]
+    },
+    {
+        "id": "e47db1d96cda986d",
+        "type": "function",
+        "z": "b13518b1015e9821",
+        "name": "function ",
+        "func": "// Initialize the class counts \nif (context.classCounts === undefined) \n{\n    context.classCounts = {\n        \"Background\": 0,\n        \"Capacitor\": 0,\n        \"Led\": 0,\n        \"Resistor\": 0\n    };\n}\n\n// Get the payload (which should be something like \"Background: 0.99609\")\nlet incomingData = msg.payload.trim();\n\n// Extract class name by splitting at the colon\nlet className = incomingData.split(\":\")[0].trim(); // Take the part before the \":\"\n\n// Check if the class name is recognized\nif (context.classCounts.hasOwnProperty(className)) \n{\n    // Count\n    context.classCounts[className]++;\n\n    // Send a message with the count for the corresponding class\n    return  {\n        payload: context.classCounts[className],  \n        topic: className                         \n    };\n} \nelse \n{\n    return null;  // Don't send anything if the class is unknown\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 260,
+        "wires": [
+            [
+                "96fafd8955bd2411",
+                "ebce452a3ab590d0",
+                "2778b2785efbef43",
+                "8115c17181e08803"
+            ]
+        ]
+    },
+    {
+        "id": "0cd26e8d1baa6fce",
+        "type": "ui_text",
+        "z": "b13518b1015e9821",
+        "group": "e8d5a7174d20f124",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Background count",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 810,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "96fafd8955bd2411",
+        "type": "switch",
+        "z": "b13518b1015e9821",
+        "name": "Background switch",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Background",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 260,
+        "wires": [
+            [
+                "0cd26e8d1baa6fce"
+            ]
+        ]
+    },
+    {
+        "id": "ebce452a3ab590d0",
+        "type": "switch",
+        "z": "b13518b1015e9821",
+        "name": "Led Switch",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Led",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 490,
+        "y": 320,
+        "wires": [
+            [
+                "12ea64a421174c02"
+            ]
+        ]
+    },
+    {
+        "id": "2778b2785efbef43",
+        "type": "switch",
+        "z": "b13518b1015e9821",
+        "name": "Capacitor Switch",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Capacitor",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 380,
+        "wires": [
+            [
+                "91aef299060e02a6"
+            ]
+        ]
+    },
+    {
+        "id": "8115c17181e08803",
+        "type": "switch",
+        "z": "b13518b1015e9821",
+        "name": "Resistor Switch",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Resistor",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 500,
+        "y": 440,
+        "wires": [
+            [
+                "7aadf94187485a29"
+            ]
+        ]
+    },
+    {
+        "id": "12ea64a421174c02",
+        "type": "ui_text",
+        "z": "b13518b1015e9821",
+        "group": "e8d5a7174d20f124",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Led count",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 780,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "91aef299060e02a6",
+        "type": "ui_text",
+        "z": "b13518b1015e9821",
+        "group": "e8d5a7174d20f124",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Capacitor count",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 800,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "7aadf94187485a29",
+        "type": "ui_text",
+        "z": "b13518b1015e9821",
+        "group": "e8d5a7174d20f124",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Resistor count",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 800,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "ea40e8066485461b",
+        "type": "debug",
+        "z": "b13518b1015e9821",
+        "name": "debug ",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 270,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "75c4e566ba7509e0",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "COM3",
+        "serialbaud": "115200",
+        "databits": 8,
+        "parity": "none",
+        "stopbits": 1,
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": 10000
+    },
+    {
+        "id": "e8d5a7174d20f124",
+        "type": "ui_group",
+        "name": "Class Count",
+        "tab": "1a020dbd190425b6",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1a020dbd190425b6",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
