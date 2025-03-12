@@ -11,5 +11,6 @@ My model consists of a classification of two classes:
 - Handshake: hold the Arduino card in your hand and shake it with a large amplitude.
 - Wind: Vibration mode in the Android app that I submitted in the discord group.
 Prediction will not occur when the Arduino card is in a static state.
+
 My model is not very good, the accuracy in practice is not high. I have trained more than 10 models with different vibration modes and parameters, but none of them work well. 
 The system is generally not reliable. However, this model still allows classification to some extent.
