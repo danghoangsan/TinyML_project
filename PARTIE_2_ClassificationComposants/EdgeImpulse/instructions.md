@@ -15,3 +15,7 @@ Then click Save Impulse.
 8. Download the zip file and Add this library through the Arduino IDE via: Sketch > Include Library > Add .ZIP Library...
 9. Charge the ino file I provided to the Arduino card. From here, the system can start predicting.
 10. Charge the ino file I provided to the Arduino card. From here, the system can start predicting. Go back to the READNE in the PARTIE_2_ClassificationComposants folder.
+
+# Some notes for the project :
+1. Leaving the image size at 32x32 and changing it to Grayscale is necessary because it will help reduce the size of the model. The memory of the Arduino card is limited, if it exceeds the limit, the model cannot be launched.
+2. The model works pretty well, however it often confuses random background with led, so the reliability is not high. However, it still works to some extent.
