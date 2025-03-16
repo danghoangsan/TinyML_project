@@ -19,3 +19,4 @@ Then click Save Impulse.
 # Some notes for the project :
 1. Leaving the image size at 32x32 and changing it to Grayscale is necessary because it will help reduce the size of the model. The memory of the Arduino card is limited, if it exceeds the limit, the model cannot be launched.
 2. The model works pretty well, however it often confuses random background with led, so the reliability is not high. However, it still works to some extent.
+3. I reused the image library you provided to train this model.
