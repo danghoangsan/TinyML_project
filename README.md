@@ -1,5 +1,6 @@
 # TinyML_project
 This is TinyML_project for the "AI for embeded systems" subject - DANG Hoang San
+
 This project consists of two sub-projects.
 
 The first sub-project allows classification of different vibration modes measured by the gyroscope integrated on the Arduino card.
