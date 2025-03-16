@@ -2,7 +2,7 @@
 1. Upload the ino file in the DataGeneration_Arduino folder to the Arduino card so that the Arduino can measure with the accelerometer.
 2. Launch the Python program data_acquisition_interface to collect data. Enter the Number of sample points or Acquisition time. Click Calculate, the program will automatically convert between these two variables. Enter the name of the csv output file. Then click Start Acquisition to start the process. Please wait until a notification window appears indicating that the acquisition process is complete.
 3. The csv output file will appear in the same folder, copy it to the Training/dataset path.
-4. Open the Jupyter notebook file and train the machine learning model following the code sequence. In fact, I reused the code you provided during class, just modified it a bit to suit your needs.
+4. Open the Jupyter notebook file and train the machine learning model following the code sequence. In fact, I reused the code you provided during class, just modified it a bit to suit the needs.
 5. After completing step 4, model.h will appear in the same folder of Jupyter Notebook file. Copy it to Inference_Arduino/inference_vibrations path and upload the ino file to Arduino card.
 6. Enable serial monitor in Arduino IDE and observe the prediction results.
 
